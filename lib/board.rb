@@ -9,7 +9,7 @@ class Board
   end
 
   def coordinate_generator( size, coordinate, direction)
-    # letter, number = coordinate.scan(/\d+|\D+/)
+    check_valid_direction direction
     coords = [coordinate]
     (size - 1).times do
         coords << (direction == :horizontal ? coords.last.next : coords.join.reverse.next.reverse)
@@ -37,5 +37,10 @@ class Board
     nil
   end
 
+  private
+
+  def check_valid_direction direction
+    raise "only horizontal or vertical allowed" unless direction == :horizontal or direction == :vertical
+  end
 end
 

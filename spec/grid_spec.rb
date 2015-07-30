@@ -3,9 +3,9 @@ require "grid"
 describe Grid do
 
   let(:cell) { double(:cell, create: true, content: true) }
-  let(:cell_class) {double(:cell_class, :new => cell)}
+  let(:cell_class) { double(:cell_class, :new => cell) }
   let(:ship) { double(:ship, size: 3) }
-  let(:subject){described_class.new({size: 10, content: cell_class})}
+  let(:subject){ described_class.new({size: 10, content: cell_class })}
 
 
   it 'has a default size' do
@@ -29,7 +29,6 @@ describe Grid do
     end
 
     it 'raises error if ship is placed off board' do
-      
       expect{subject.insert(ship, "W15")}.to raise_error "Can't place ship off board"
     end
   end

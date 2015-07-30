@@ -14,16 +14,14 @@ class Grid
   def initialize(options)
     @size = options[:size] || DEFAULT_SIZE
     @content = options[:content]
-    @cell_content = options[:cell_content] 
+    @cell_content = options[:cell_content]
     create_grid
   end
 
   def insert(ship, coordinate)
-
     coordinate_converter(coordinate)
     check_grid_location_exits(@coordinates)
     grid_locations[@coordinates[0]][@coordinates[1]].content = ship
-
   end
 
 
