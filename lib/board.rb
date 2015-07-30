@@ -1,28 +1,27 @@
 class Board
 
   attr_reader :ships, :grid
+  attr_writer :coordinate
 
   def initialize (options )
     @grid = options[:grid]
     @ships = []
   end
 
-  def place(ship, coordinate, direction, grid = @grid)
-    @grid.insert(ship, coordinate)
-    array = coordinate.scan(/\d+|\D+/)
-    number = array[1]
-    letter = array[0]
-    (ship.size).times do
-      if direction == :horizontal
-        number = number.next
-      elsif direction == :vertical
-        letter = letter.next
-      else
-        return "not valid coordinate"
-      end
-      coordinate = (letter + number)
-      @grid.insert(ship, coordinate)
+  def coordinate_generator( size, coordinate, direction)
+    letter, number = coordinate.scan(/\d+|\D+/)
+    coords = [coordinate]
+    (size - 1).times do
+        coords << (direction == :horizontal ? coords.last.next : coords.reverse.next.reverse)
     end
+    coords
+  end
+
+  def place(ship, coordinate, direction)   #, grid = @grid)
+    coordinate_generator(ship.size, coordinate, direction).each do |coord|
+      @grid.insert(ship, coord)
+    end
+
     ship.confirm_place
     add_ship ship
   end
