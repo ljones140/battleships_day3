@@ -19,14 +19,20 @@ class Grid
   end
 
   def insert(ship, coordinate)
-    coordinate_converter(coordinate)
-    grid_locations[@coordinates[0]][@coordinates[1]].content = ship
 
+    coordinate_converter(coordinate)
+    check_grid_location_exits(@coordinates)
+    grid_locations[@coordinates[0]][@coordinates[1]].content = ship
 
   end
 
 
   private
+
+  def check_grid_location_exits (coordinates)
+    raise "Can't place ship off board" if coordinates[0] > @size or coordinates[1] > @size
+
+  end
 
   def create_grid
     @grid_locations = Array.new(@size){Array.new(@size)}

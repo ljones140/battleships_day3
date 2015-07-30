@@ -25,7 +25,12 @@ describe Grid do
   describe ' #insert' do
     it 'inserts ship into location' do
       expect(cell).to receive(:content=).with(ship )
-      subject.insert(ship, "A1", :horizontal)
+      subject.insert(ship, "A1")
+    end
+
+    it 'raises error if ship is placed off board' do
+      
+      expect{subject.insert(ship, "W15")}.to raise_error "Can't place ship off board"
     end
   end
 end

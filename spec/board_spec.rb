@@ -36,10 +36,11 @@ let(:subject){described_class.new({size: 10, grid: grid})}
     it 'checks insert with direction returns three times' do
       #byebug
      # subject.place(ship, "A3", :horizontal)
-       expect(grid).to receive(:insert).exactly(3).times
+      expect(grid).to receive(:insert).exactly(3).times
       subject.place(ship, "A3", :vertical)
     end
 
+    
     # it 'runs coordinate_generator' do
     #   byebug
     #   subject.coordinate_generator(ship, 3, "A1", :horizontal)
