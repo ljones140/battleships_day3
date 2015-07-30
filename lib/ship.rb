@@ -22,5 +22,4 @@ class Ship
     raise "Ship has already been placed" if placed?
     @placed = true
   end
-
 end

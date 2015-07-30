@@ -2,9 +2,8 @@ require 'board'
 
 describe Board do
 
-# let(:ship){ double(:ship, place: true, placed?: true) }
 let(:ship){ double(:ship, place: true, confirm_place: :ship) }
-let(:grid){ double(:grid, insert: true)}
+let(:grid){ double(:grid, insert: true) }
 
   it "has a ships array" do
     expect(subject.ships).to eq []

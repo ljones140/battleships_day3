@@ -2,7 +2,6 @@ require "cell"
 
 describe Cell do
   let(:water) { double( :water , create: true)  }
- # let(:ship) { double(:ship, place: true) }
 
   it "contains water by default" do
     cell = described_class.new({content: water})

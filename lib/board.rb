@@ -10,7 +10,7 @@ class Board
     @size = options[:size]
     @container = options[:container]
     @ships = []
-    @grid = @container.create options = {size: @size}
+    @grid = @container.create options = { size: @size }
   end
 
   def place(ship, coordinate, grid = @grid)

@@ -2,16 +2,16 @@ require_relative "cell"
 
 class Grid
 
-  def self.create (options = {size: @size})
+  def self.create (options = { size: @size })
     size = options[:size]
-    Grid.new(options = {size: size, content: Cell})
+    Grid.new(options = { size: size, content: Cell })
   end
 
   DEFAULT_SIZE = 10
 
   attr_reader :grid_locations, :size
 
-  def initialize(options = {size: DEFAULT_SIZE, content: Cell} )
+  def initialize(options = { size: DEFAULT_SIZE, content: Cell})
     @size = options[:size]
     @content = options[:content]
     create_grid

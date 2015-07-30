@@ -8,7 +8,7 @@ class Cell
 
   attr_accessor :content
 
-  def initialize(options = {content: Water})
+  def initialize(options = { content: Water })
     @content = options[:content]
     @content.create
   end
