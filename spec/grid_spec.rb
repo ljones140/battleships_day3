@@ -3,7 +3,7 @@ require "grid"
 describe Grid do
 
   let(:cell) { double(:cell, create: true, content: true) }
-  let(:cell_class) {double(:cell_class, :new=> cell)}
+  let(:cell_class) {double(:cell_class, :new => cell)}
   let(:ship) { double(:ship, size: 3) }
   let(:subject){described_class.new({size: 10, content: cell_class})}
 
@@ -25,7 +25,7 @@ describe Grid do
   describe ' #insert' do
     it 'inserts ship into location' do
       expect(cell).to receive(:content=).with(ship )
-     subject.insert(ship, "A1"))
+      subject.insert(ship, "A1")
     end
 
     xit 'ship is in cells x size' do
