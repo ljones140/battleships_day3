@@ -31,5 +31,11 @@ describe Grid do
     it 'raises error if ship is placed off board' do
       expect{subject.insert(ship, "W15")}.to raise_error "Can't place ship off board"
     end
+
+    it "does not allow overlapping ships" do
+      allow(cell).to receive(:content=).with(ship )
+      subject.insert(ship, "F1")
+      expect{subject.insert(ship, "F1")}.to raise_error "Ship already in location"
+    end
   end
 end
