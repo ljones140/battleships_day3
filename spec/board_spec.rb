@@ -4,8 +4,7 @@ describe Board do
 
 let(:ship){ double(:ship, place: true, confirm_place: :ship) }
 let(:grid){ double(:grid, insert: true) }
-let(:grid_class) {double :grid_class, create: grid, new: grid}
-let(:subject){described_class.new({size: 10, container: grid_class})}
+let(:subject){described_class.new({size: 10, grid: grid})}
 
   it "has a ships array" do
     expect(subject.ships).to eq []

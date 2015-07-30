@@ -3,10 +3,8 @@ class Board
   attr_reader :ships, :grid
 
   def initialize (options )
-    @size = options[:size]
-    @container = options[:container]
+    @grid = options[:grid]
     @ships = []
-    @grid = @container.new(options = { size: @size })
   end
 
   def place(ship, coordinate, grid = @grid)
@@ -17,6 +15,13 @@ class Board
 
   def add_ship ship
     @ships << ship
+  end
+
+  def display
+    grid.grid_locations.each do |row|
+      p row.map{|cell|cell.content.respond_to?(:placed?) ? "S" : "~"}
+    end
+    nil
   end
 
 end

@@ -1,6 +1,6 @@
 class Water
 
-  def self.create
-    Water.new
-  end
+  # def self.create
+  #   Water.new
+  # end
 end

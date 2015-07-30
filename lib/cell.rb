@@ -4,6 +4,6 @@ class Cell
   attr_accessor :content
 
   def initialize(options )
-    @content = options[:content].new
+    @content = options.fetch(:content, String).new
   end
 end
