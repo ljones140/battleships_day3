@@ -4,6 +4,8 @@ describe Board do
 
 let(:ship){ double(:ship, place: true, confirm_place: :ship) }
 let(:grid){ double(:grid, insert: true) }
+let(:grid_class) {double :grid_class, create: grid}
+let(:subject){described_class.new({size: 10, container: grid_class})}
 
   it "has a ships array" do
     expect(subject.ships).to eq []
@@ -21,7 +23,8 @@ let(:grid){ double(:grid, insert: true) }
     end
 
     it 'calls insert method on grid' do
-      expect(subject.place(ship, "A1", grid)).to eq(:ship)
+      expect(grid).to receive(:insert).with(ship, "A1")
+      subject.place(ship, "A1", grid)
     end
   end
 end

@@ -1,23 +1,23 @@
-require_relative "cell"
+# require_relative "cell"
 
 class Grid
 
-  def self.create (options = { size: @size })
-    size = options[:size]
-    Grid.new(options = { size: size, content: Cell })
-  end
+  # def self.create (options = { size: @size })
+  #   size = options[:size]
+  #   Grid.new(options = { size: size, content: Cell })
+  # end
 
   DEFAULT_SIZE = 10
 
   attr_reader :grid_locations, :size
 
-  def initialize(options = { size: DEFAULT_SIZE, content: Cell})
-    @size = options[:size]
+  def initialize(options)
+    @size = options[:size] || DEFAULT_SIZE
     @content = options[:content]
     create_grid
   end
 
-  def insert(ship, coordinate, direction)
+  def insert(ship, coordinate)
     coordinate_converter(coordinate)
     grid_locations[@coordinates[0]][@coordinates[1]].content = ship
   end
@@ -30,7 +30,7 @@ class Grid
   end
 
   def populate_grid
-    @grid_locations = @grid_locations.map! { |inner_array| inner_array.map! {|x| x = @content.create } }
+    @grid_locations = @grid_locations.map! { |inner_array| inner_array.map! {|x| x = @content.new } }
   end
 
   def coordinate_converter(coordinate)

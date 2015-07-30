@@ -1,12 +1,8 @@
-require_relative "ship"
-require_relative "grid"
-require_relative "cell"
-
 class Board
 
   attr_reader :ships, :grid
 
-  def initialize (options = { size: 10, container: Grid })
+  def initialize (options )
     @size = options[:size]
     @container = options[:container]
     @ships = []
