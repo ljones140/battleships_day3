@@ -27,12 +27,5 @@ describe Grid do
       expect(cell).to receive(:content=).with(ship )
       subject.insert(ship, "A1")
     end
-
-    xit 'ship is in cells x size' do
-      subject.insert(ship, "A1", :horizontal)
-      expect(grid_locations[0][0].content = ship).to eq(ship)
-      expect(grid_locations[0][1].content = ship).to eq(ship)
-      expect(grid_locations[0][3].content = ship).to eq(ship)
-    end
   end
 end
