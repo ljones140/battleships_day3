@@ -25,7 +25,7 @@ describe Grid do
   describe ' #insert' do
     it 'inserts ship into location' do
       expect(cell).to receive(:content=).with(ship )
-      subject.insert(ship, "A1")
+      subject.insert(ship, "A1", :horizontal)
     end
   end
 end

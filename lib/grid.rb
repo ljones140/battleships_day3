@@ -21,6 +21,8 @@ class Grid
   def insert(ship, coordinate)
     coordinate_converter(coordinate)
     grid_locations[@coordinates[0]][@coordinates[1]].content = ship
+
+
   end
 
 

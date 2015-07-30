@@ -7,10 +7,24 @@ class Board
     @ships = []
   end
 
-  def place(ship, coordinate, grid = @grid)
-    add_ship ship
+  def place(ship, coordinate, direction, grid = @grid)
     @grid.insert(ship, coordinate)
+    array = coordinate.scan(/\d+|\D+/)
+    number = array[1]
+    letter = array[0]
+    (ship.size).times do
+      if direction == :horizontal
+        number = number.next
+      elsif direction == :vertical
+        letter = letter.next
+      else
+        return "not valid coordinate"
+      end
+      coordinate = (letter + number)
+      @grid.insert(ship, coordinate)
+    end
     ship.confirm_place
+    add_ship ship
   end
 
   def add_ship ship
