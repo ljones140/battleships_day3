@@ -9,10 +9,10 @@ class Board
   end
 
   def coordinate_generator( size, coordinate, direction)
-    letter, number = coordinate.scan(/\d+|\D+/)
+    # letter, number = coordinate.scan(/\d+|\D+/)
     coords = [coordinate]
     (size - 1).times do
-        coords << (direction == :horizontal ? coords.last.next : coords.reverse.next.reverse)
+        coords << (direction == :horizontal ? coords.last.next : coords.join.reverse.next.reverse)
     end
     coords
   end
