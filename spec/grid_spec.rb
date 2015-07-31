@@ -2,7 +2,7 @@ require "grid"
 
 describe Grid do
 
-  let(:cell) { double(:cell, create: true, content: true) }
+  let(:cell) { double(:cell, create: true, content: :water) }
   let(:cell_class) { double(:cell_class, :new => cell) }
   let(:ship) { double(:ship, size: 3) }
   let(:subject){ described_class.new({size: 10, content: cell_class })}
@@ -33,8 +33,8 @@ describe Grid do
     end
 
     it "does not allow overlapping ships" do
-      allow(cell).to receive(:content=).with(ship )
-      subject.insert(ship, "F1")
+      #subject.insert(ship, "F1")
+      allow(cell).to receive(:content=)#.with(ship )
       expect{subject.insert(ship, "F1")}.to raise_error "Ship already in location"
     end
   end

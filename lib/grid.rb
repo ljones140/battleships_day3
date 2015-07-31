@@ -1,3 +1,5 @@
+require_relative 'water'
+
 class Grid
 
   DEFAULT_SIZE = 10
@@ -14,7 +16,7 @@ class Grid
   def insert(ship, coordinate)
     coordinate_converter(coordinate)
     check_grid_location_exits(@coordinates)
-   # check_overlap(@coordinates)
+    check_overlap(@coordinates)
     grid_locations[@coordinates[0]][@coordinates[1]].content = ship
   end
 
@@ -34,9 +36,9 @@ class Grid
     @grid_locations = @grid_locations.map! { |inner_array| inner_array.map! {|x| x = @content.new({content: cell_content}) } }
   end
 
-  # def check_overlap coordinates
-  #   raise "Ship already in location" unless [@coordinates[0]][@coordinates[1]].content.include?(Water.class)
-  # end
+  def check_overlap coordinates
+    fail "Ship already in location" if grid_locations[@coordinates[0]][@coordinates[1]].content != @cell_content
+  end
 
   def coordinate_converter(coordinate)
     x = coordinate.slice(0).upcase.ord - 65
