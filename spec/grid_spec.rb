@@ -24,7 +24,7 @@ describe Grid do
 
   describe ' #insert' do
     it 'inserts ship into location' do
-      expect(cell).to receive(:content=).with(ship )
+      expect(cell).to receive(:content=).with(ship)
       subject.insert(ship, "A1")
     end
 
@@ -33,9 +33,10 @@ describe Grid do
     end
 
     it "does not allow overlapping ships" do
-      #subject.insert(ship, "F1")
-      allow(cell).to receive(:content=)#.with(ship )
-      expect{subject.insert(ship, "F1")}.to raise_error "Ship already in location"
+      allow(cell).to receive(:content=).with(ship)
+      subject.insert(ship, "A1")
+      allow(cell).to receive(:content=).with(:water)
+      expect{2.times {subject.insert(Ship, "A1")}}.to raise_error "Ship already in location"
     end
   end
 end

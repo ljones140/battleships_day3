@@ -1,4 +1,4 @@
-require_relative 'water'
+require_relative 'ship'
 
 class Grid
 
@@ -37,7 +37,8 @@ class Grid
   end
 
   def check_overlap coordinates
-    fail "Ship already in location" if grid_locations[@coordinates[0]][@coordinates[1]].content != @cell_content
+    # fail "Ship already in location" if grid_locations[@coordinates[0]][@coordinates[1]].content.is_a? Ship
+    fail "Ship already in location" if grid_locations[@coordinates[0]][@coordinates[1]].content.is_a? Ship
   end
 
   def coordinate_converter(coordinate)
