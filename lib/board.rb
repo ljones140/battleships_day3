@@ -12,7 +12,7 @@ class Board
     check_valid_direction direction
     coords = [coordinate]
     (size - 1).times do
-        coords << (direction == :horizontal ? coords.last.next : coords.join.reverse.next.reverse)
+        coords << (direction == :horizontal ? coords.last.next : coords[-1][0,1].next + coords[-1][1,10] )
     end
     coords
   end

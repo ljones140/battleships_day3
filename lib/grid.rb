@@ -14,7 +14,7 @@ class Grid
   def insert(ship, coordinate)
     coordinate_converter(coordinate)
     check_grid_location_exits(@coordinates)
-    check_overlap(@coordinates)
+   # check_overlap(@coordinates)
     grid_locations[@coordinates[0]][@coordinates[1]].content = ship
   end
 
